@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 根节点 -->
+<configuration>
+	<!-- 采用log4j记录 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+	
+		<setting name="autoMappingBehavior" value="FULL" />
+	</settings>
+	
+	<typeAliases>
+		<package name="cn.bdqn.pojo"/>
+	</typeAliases>
+	
+	<environments default="kaifa">
+		<!-- 配置开发环境 -->
+		<environment id="kaifa">
+			<!-- 采用jdbc进行事务管理 -->
+			<transactionManager type="JDBC" />
+			<!-- 配置数据源 POOLED 是mybatis自带的数据源 JNDI tomcat -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 加载mapper文件 -->
+	<mappers>
+		<mapper resource="cn/bdqn/dao/user/UserMapper.xml" />
+	</mappers>
+
+
+
+</configuration>
